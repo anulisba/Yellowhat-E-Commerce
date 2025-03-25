@@ -1,8 +1,8 @@
 "use client";
 
 
-import { useEffect, useState } from "react";
-
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 // Define TypeScript interface for product data
 interface ProductData {
     name: string;
@@ -10,26 +10,16 @@ interface ProductData {
     brand: string;
     description: string;
 }
+function EditProductContent() {
+    const searchParams = useSearchParams();
 
-export default function EditProduct() {
     const [productData, setProductData] = useState<ProductData>({
-        name: "",
-        category: "",
-        brand: "",
-        description: "",
+        name: searchParams.get("name") || "",
+        category: searchParams.get("category") || "",
+        brand: searchParams.get("brand") || "",
+        description: searchParams.get("description") || "",
     });
 
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            const urlParams = new URLSearchParams(window.location.search);
-            setProductData({
-                name: urlParams.get("name") || "",
-                category: urlParams.get("category") || "",
-                brand: urlParams.get("brand") || "",
-                description: urlParams.get("description") || "",
-            });
-        }
-    }, []);
     const [images, setImages] = useState<(string | null)[]>([null, null, null]);
 
     const handleImageChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,12 +30,12 @@ export default function EditProduct() {
             setImages(newImages);
         }
     };
+
     const removeImage = (index: number) => {
         const newImages = [...images];
         newImages[index] = null;
         setImages(newImages);
     };
-
 
     return (
         <div className="flex flex-row gap-3 h-[70vh] pr-4">
@@ -61,7 +51,6 @@ export default function EditProduct() {
                     }
                     className="w-full border border-gray-300 rounded-md p-1.5 text-[13px] mb-1"
                 />
-
                 <div className="flex gap-3">
                     <div className="w-1/2">
                         <label className="block font-semibold text-[14px] mb-1">Category</label>
@@ -173,5 +162,12 @@ export default function EditProduct() {
 
             </div>
         </div>
+    );
+}
+export default function EditProduct() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <EditProductContent />
+        </Suspense>
     );
 }
