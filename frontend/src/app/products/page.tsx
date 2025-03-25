@@ -45,7 +45,7 @@ const Products = async (props: {
   // const searchParams = await props.searchParams;
 
   return (
-    <div className="py-16 flex flex-col gap-10">
+    <div className="py-8 flex flex-col gap-10">
       {/* categories */}
       <div className="flex gap-3 w-full overflow-x-scroll no-scrollbar">
         {categories.map((category, index) => (

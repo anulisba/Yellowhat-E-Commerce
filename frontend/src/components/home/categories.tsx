@@ -41,7 +41,7 @@ const Categories = () => {
     <div className="flex flex-col gap-5">
       <div className="flex justify-between items-center">
         <h6 className="font-medium text-xl">Popular Categories</h6>
-        <p className="text-brand-darkgrey text-xs cursor-pointer">View All</p>
+        {/* <p className="text-brand-darkgrey text-xs cursor-pointer">View All</p> */}
       </div>
       <div className="flex gap-3 justify-between overflow-x-scroll no-scrollbar">
         {categories.map((category, index) => (
