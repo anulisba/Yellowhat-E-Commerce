@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 const WeeklyDealsTable = () => {
     const router = useRouter();
-    const [products, setProducts] = useState([
+    const [products] = useState([
         {
             id: "#HW001",
             name: "Cordless Drill Set",
