@@ -42,7 +42,7 @@ const Products = async (props: {
       icon: "/categories/lifting.png",
     },
   ];
-  const searchParams = await props.searchParams;
+  // const searchParams = await props.searchParams;
 
   return (
     <div className="py-16 flex flex-col gap-10">

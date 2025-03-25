@@ -6,7 +6,7 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  // const { slug } = await params;
 
   return (
     <div className="py-16 flex flex-col gap-24">
