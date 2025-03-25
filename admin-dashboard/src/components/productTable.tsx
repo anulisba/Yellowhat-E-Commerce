@@ -5,7 +5,25 @@ import Image from "next/image";
 import { Eye, Edit, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const DeleteCnfModal = ({ modalCloseHandler, confirmDelete }) => {
+// Define Product Type
+interface Product {
+    id: string;
+    name: string;
+    price: string;
+    quantity: number;
+    sale: number;
+    stock: string;
+    startDate: string;
+    image: string;
+}
+
+// Define Props for DeleteCnfModal
+interface DeleteCnfModalProps {
+    modalCloseHandler: () => void;
+    confirmDelete: () => void;
+}
+
+const DeleteCnfModal: React.FC<DeleteCnfModalProps> = ({ modalCloseHandler, confirmDelete }) => {
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96 dark:bg-[#e5e5e5] dark:border dark:border-gray-600">
@@ -37,9 +55,9 @@ const DeleteCnfModal = ({ modalCloseHandler, confirmDelete }) => {
     );
 };
 
-const ProductTable = () => {
+const ProductTable: React.FC = () => {
     const router = useRouter();
-    const [products, setProducts] = useState([
+    const [products, setProducts] = useState<Product[]>([
         {
             id: "#HT001",
             name: "Cordless Drill Driver",
@@ -102,18 +120,22 @@ const ProductTable = () => {
         },
     ]);
 
-    const [showModal, setShowModal] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-    const handleDeleteClick = (product) => {
+    const handleDeleteClick = (product: Product) => {
         setSelectedProduct(product);
         setShowModal(true);
     };
+
     const addNewClick = () => {
         router.push("/Home/Products/Add-New-Product");
-    }
+    };
+
     const confirmDelete = () => {
-        setProducts(products.filter((p) => p.id !== selectedProduct.id));
+        if (selectedProduct) {
+            setProducts(products.filter((p) => p.id !== selectedProduct.id));
+        }
         setShowModal(false);
     };
 

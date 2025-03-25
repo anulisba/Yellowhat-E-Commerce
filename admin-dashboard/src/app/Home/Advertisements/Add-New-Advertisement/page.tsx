@@ -1,12 +1,12 @@
-"use client"
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
 export default function AddAdvertisement() {
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-    const handleFileUpload = (e) => {
-        const file = e.target.files[0];
-        if (file && file.type === 'image') {
+    const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file && file.type.startsWith("image/")) {
             setSelectedFile(file);
         }
     };
@@ -18,7 +18,7 @@ export default function AddAdvertisement() {
     return (
         <>
             <div className="pr-4">
-                <div className="w-full  p-4 shadow-md bg-white rounded-[10px]">
+                <div className="w-full p-4 shadow-md bg-white rounded-[10px]">
                     {/* Category Name Row */}
                     <div className="flex items-center mb-4">
                         <label className="w-1/4 font-semibold text-[14px]">
@@ -42,7 +42,7 @@ export default function AddAdvertisement() {
                             <label className="cursor-pointer">
                                 <input
                                     type="file"
-                                    accept=".jpg/.png/.webp"
+                                    accept="image/*"
                                     className="hidden"
                                     onChange={handleFileUpload}
                                 />

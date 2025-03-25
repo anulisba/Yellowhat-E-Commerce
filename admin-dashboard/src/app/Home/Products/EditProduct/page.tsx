@@ -30,20 +30,22 @@ export default function EditProduct() {
             });
         }
     }, []);
-    const [images, setImages] = useState([null, null, null]);
-    const handleImageChange = (index, event) => {
-        const file = event.target.files[0];
+    const [images, setImages] = useState<(string | null)[]>([null, null, null]);
+
+    const handleImageChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         if (file) {
             const newImages = [...images];
             newImages[index] = URL.createObjectURL(file);
             setImages(newImages);
         }
     };
-    const removeImage = (index) => {
+    const removeImage = (index: number) => {
         const newImages = [...images];
         newImages[index] = null;
         setImages(newImages);
     };
+
 
     return (
         <div className="flex flex-row gap-3 h-[70vh] pr-4">

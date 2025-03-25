@@ -2,20 +2,23 @@
 import { useState } from "react";
 
 export default function Page() {
-    const [images, setImages] = useState([null, null, null]);
-    const handleImageChange = (index, event) => {
-        const file = event.target.files[0];
+    const [images, setImages] = useState<(string | null)[]>([null, null, null]);
+
+    const handleImageChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         if (file) {
             const newImages = [...images];
             newImages[index] = URL.createObjectURL(file);
             setImages(newImages);
         }
     };
-    const removeImage = (index) => {
+
+    const removeImage = (index: number) => {
         const newImages = [...images];
         newImages[index] = null;
         setImages(newImages);
     };
+
     return (
         <div className="flex flex-row gap-3 h-[70vh] pr-4">
             <div className="w-1/2 bg-white rounded-[10px] p-4 pt-6">
@@ -113,13 +116,12 @@ export default function Page() {
                     Add Short Description <span className="text-red-500">*</span>
                 </label>
                 <input type="text" placeholder="" className="w-full border border-gray-300 rounded-md p-1.5 text-[13px] mb-1" />
+
                 <div className="flex justify-end mt-4">
                     <button className="bg-blue-600 text-white rounded-md px-4 py-2">
                         Add product
                     </button>
                 </div>
-
-
             </div>
         </div>
     );
