@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function EditCategory() {
+function EditCategory() {
     const searchParams = useSearchParams();
     const [categoryName, setCategoryName] = useState('');
     const [existingImage, setExistingImage] = useState('');
@@ -125,5 +125,12 @@ export default function EditCategory() {
                 </div>
             </form>
         </div>
+    );
+}
+export default function EditProduct() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <EditCategory />
+        </Suspense>
     );
 }
