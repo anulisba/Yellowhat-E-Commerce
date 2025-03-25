@@ -10,7 +10,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <main className="py-16 flex flex-col gap-8">
+    <main className="pb-16 pt-6 flex flex-col gap-8">
       <Categories />
       <TopAdvertisement />
       <WeeklyDeals />
