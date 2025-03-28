@@ -34,7 +34,7 @@ const Header = () => {
       <div className="relative w-3/4 md:w-96">
         <input
           type="text"
-          className="outline-none rounded-4xl ps-4 pe-14 py-1.5 pb-3 md:pb-4 md:py-3 border border-brand-lightgrey w-full"
+          className="outline-none rounded-4xl ps-4 pe-14 py-1.5 pb-1 md:pb-4 md:py-3 border border-brand-lightgrey w-full"
           placeholder="search anything..."
         />
         <button className="absolute bg-brand-darkgrey top-1/2 -translate-y-1/2 right-0.5 md:right-1 p-3 rounded-4xl cursor-pointer">
