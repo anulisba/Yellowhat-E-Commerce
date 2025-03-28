@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
+import FilterButtonProvider from "@/context/filterbtn";
 
 const myFont = localFont({
   src: [
@@ -35,8 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${myFont.className} antialiased`}>
         <Header />
-
-        {children}
+        <FilterButtonProvider>{children}</FilterButtonProvider>
         <Footer />
       </body>
     </html>

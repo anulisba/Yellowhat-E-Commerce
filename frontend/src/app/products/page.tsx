@@ -1,4 +1,6 @@
 import ProductCard from "@/components/common/product_card";
+import FilterBtn from "@/components/products/filter_btn";
+import FilterComponent from "@/components/products/filters";
 import Image from "next/image";
 import React from "react";
 
@@ -67,32 +69,20 @@ const Products = async (props: {
         ))}
       </div>
       {/* products & filters */}
-      <div className="grid grid-cols-6 gap-3">
-        <div className="col-span-1 flex flex-col gap-5">
-          <div className="py-3 border-b border-b-brand-lightgrey">
-            <span className="text-2xl">Filters</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-xl">Price</span>
-            <p className="text-text-grey">Price $600 - $1200</p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <span className="text-xl">Brands</span>
-            <div className="flex flex-col gap-2">
-              <div className="flex gap-2">
-                <input type="checkbox" name="brands" id="brand" />
-                <label htmlFor="brand">Brand</label>
-              </div>
-            </div>
-          </div>
+      <div className="flex flex-col gap-3">
+        <div className="flex justify-end">
+          <FilterBtn />
         </div>
-        {/* products listing */}
-        <div className="col-span-5 grid grid-cols-4 gap-3">
-          {[1, 2, 3, 4, 5].map((product) => (
-            <div key={product} className="w-62">
-              <ProductCard />
-            </div>
-          ))}
+        <div className="grid lg:grid-cols-6 gap-3">
+          <FilterComponent />
+          {/* products listing */}
+          <div className="w-full col-span-5 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3">
+            {[1, 2, 3, 4, 5].map((product) => (
+              <div key={product} className="w-full">
+                <ProductCard />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
