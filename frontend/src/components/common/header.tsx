@@ -1,4 +1,5 @@
 "use client";
+import ThemeChangeBtn from "@/utils/theme_btn";
 import { Moon, Search } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -50,7 +51,7 @@ const Header = () => {
         <h6 className="m-0 text-brand-darkgrey">+971 2 642 2298</h6>
       </div>
       <div className="flex">
-        <Moon className="cursor-pointer" />
+        <ThemeChangeBtn />
       </div>
     </header>
   );

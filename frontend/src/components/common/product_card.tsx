@@ -19,7 +19,9 @@ const ProductCard = () => {
         <div className="px-2 py-1 bg-brand-darkgrey rounded-4xl w-fit">
           <p className="text-yellow-500 text-xs">15% OFF</p>
         </div>
-        <h5 className="font-semibold">Air Purifier withTrue HEPA H14 Filter</h5>
+        <h5 className="font-semibold dark:text-black">
+          Air Purifier withTrue HEPA H14 Filter
+        </h5>
       </div>
       <h6 className="px-5">$489.00</h6>
     </div>

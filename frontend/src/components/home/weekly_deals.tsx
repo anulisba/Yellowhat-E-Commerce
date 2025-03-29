@@ -22,7 +22,7 @@ const WeeklyDeals = () => {
           <ProductCard />
         </div>
       </div>
-      <button className="px-5 py-3 rounded-4xl bg-white w-fit mx-auto cursor-pointer">
+      <button className="px-5 py-3 rounded-4xl bg-white w-fit mx-auto cursor-pointer dark:text-black">
         See All Products
       </button>
     </div>

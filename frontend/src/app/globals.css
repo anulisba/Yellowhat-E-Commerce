@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --brand-yellow: #f2cb07;
-  --brand-dark-grey: #4d4d4d;
-  --brand-light-grey: #dfdfdf;
-  --brand-component-bgcolor: #ebeef6;
-  --text-grey: #6d6a58;
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --brand-yellow: #f2cb07;
+    --brand-dark-grey: #4d4d4d;
+    --brand-light-grey: #dfdfdf;
+    --brand-component-bgcolor: #ebeef6;
+    --text-grey: #6d6a58;
+  }
+
+  .dark {
+    --foreground: #ffffff;
+    --background: #030712;
+  }
 }
 
 @theme {
@@ -21,13 +28,6 @@
   --color-component-bgcolor: var(--brand-component-bgcolor);
   --color-text-grey: var(--text-grey);
   --breakpoint-xs: 30rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: black;
-  }
 }
 
 body {
